@@ -113,3 +113,4 @@ require (
 )
 
 replace github.com/sebest/xff v0.0.0-20160910043805-6c115e0ffa35 => github.com/packethost/xff v0.0.0-20190305172552-d3e9190c41b3
+replace github.com/tinkerbell/ipxedust v0.0.0-20221229132916-920985a484b6 => github.com/fintelia/ipxedust v0.0.0-20230119225424-cec24679eb84
