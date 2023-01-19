@@ -179,7 +179,14 @@ func main() {
 	bootsBaseURL := conf.PublicFQDN
 	if cfg.ipxeRemoteHTTPAddr == "" { // use local iPXE binary service for HTTP
 		if cfg.ipxeHTTPEnabled {
-			ipxeHandler = ihttp.Handler{Log: lg}.Handle
+			if len(conf.ScriptPatch) > 0 {
+				ipxeHandler = ihttp.Handler{
+					Log:   lg,
+					Patch: []byte(conf.ScriptPatch + "\n#"),
+				}.Handle
+			} else {
+				ipxeHandler = ihttp.Handler{Log: lg}.Handle
+			}
 		}
 		ipxePattern = "/ipxe/"
 		ipxeBaseURL = conf.PublicFQDN + ipxePattern

@@ -21,6 +21,8 @@ var (
 	HTTPBind   = env.Get("HTTP_BIND", PublicIPv4.String()+":80")
 	BOOTPBind  = env.Get("BOOTP_BIND", PublicIPv4.String()+":67")
 
+	ScriptPatch = env.Get("IPXE_SCRIPT_PATCH", "")
+
 	// Default to Google Public DNS.
 	DHCPLeaseTime = env.Duration("DHCP_LEASE_TIME", (2 * 24 * time.Hour))
 	DNSServers    = ParseIPv4s(env.Get("DNS_SERVERS", "8.8.8.8,8.8.4.4"))
